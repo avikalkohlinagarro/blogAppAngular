@@ -1,0 +1,15 @@
+<!--The body is: {{item}}-->
+<!--The category is: {{category}}-->
+<div class="mainBody">
+  <!--<app-nav-bar-body-home [username]="username" [blogItems]="blogItems" *ngIf="item=='Home' && searchedName==null && blogDetailId==null" (notify)="openBlog($event)"></app-nav-bar-body-home>-->
+  <!--<app-nav-bar-body-favourites [blogItems]="blogItems" *ngIf="item=='Favourites' && searchedName==null && blogDetailId==null" (notify)="openBlog($event)"></app-nav-bar-body-favourites>-->
+  <!--<app-nav-bar-body-categories [category]="categorySelected" [blogItems]="blogItems" *ngIf="item=='Categories' && searchedName==null && blogDetailId==null" (notify)="openBlog($event)"></app-nav-bar-body-categories>-->
+  <!--<app-nav-bar-body-search [blogItems]="blogItems" [searchName]="searchedName" *ngIf="searchedName !=null && blogDetailId==null" (notify)="openBlog($event)"></app-nav-bar-body-search>-->
+  <app-nav-bar-body-home [state]="item" [username]="user" [blogItems]="blogItems" *ngIf="item=='Home' && searchedName==null && blogDetailData==null" (notify)="openBlog($event)" (notifyAdd)="addBlog($event)" (notifyDelete)="deleteBlog($event)" (notifyEdit)="updateBlog($event)" (notifyFav)="updateUser($event)"></app-nav-bar-body-home>
+  <app-nav-bar-body-favourites [state]="item" [username]="user" [blogItems]="blogItems" *ngIf="item=='Favourites' && searchedName==null && blogDetailData==null" (notify)="openBlog($event)" (notifyFav)="updateUser($event)"></app-nav-bar-body-favourites>
+  <app-nav-bar-body-categories [state]="item" [username]="user" [category]="categorySelected" [blogItems]="blogItems" *ngIf="item=='Categories' && searchedName==null && blogDetailData==null" (notify)="openBlog($event)" (notifyFav)="updateUser($event)"></app-nav-bar-body-categories>
+  <app-nav-bar-body-search [state]="item" [username]="user" [blogItems]="blogItems" [searchName]="searchedName" *ngIf="searchedName !=null && blogDetailData==null" (notify)="openBlog($event)" (notifyFav)="updateUser($event)"></app-nav-bar-body-search>
+  <app-nav-bar-body-ratings [state]="item" [username]="user" [blogItems]="blogItems" *ngIf="item=='Top Rated' && searchedName==null && blogDetailData==null" (notify)="openBlog($event)" (notifyFav)="updateUser($event)"></app-nav-bar-body-ratings>
+  <app-blog-details [username]="user" [blogDetailData]="blogDetailData" *ngIf="blogDetailData!=null" (notify)="goToHome($event)" (notifyFavourite)="updateUser($event)"></app-blog-details>
+  <!--<app-blog-details [blogID]="blogDetailId" [blogDetailData]="blogDetailData" [blogItems]="blogItems" *ngIf="blogDetailId!=null" (notify)="goToHome($event)"></app-blog-details>-->
+</div>

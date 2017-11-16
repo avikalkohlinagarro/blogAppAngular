@@ -1,0 +1,26 @@
+<!--<form ngNoForm id="formBlog" class="col s12" action="javascript:void(0)" (submit)="editBlog(blogText.value)" #formBlog>-->
+<div class="row">
+  <form ngNoForm id="formBlog" class="col s12" action="javascript:void(0)" (submit)="editBlog(blogText)" #formBlog>
+    <div class="row">
+      <div class="card blue-grey darken-1 blogPost hoverable">
+        <div class="card-content white-text">
+          <span class="card-title">Edit Blog</span>
+          <div class="row">
+            <div class="input-field col s12">
+
+              <textarea name="blogText" id="blogText" class="materialize-textarea validate form-control" [(ngModel)]="blogText" autofocus required></textarea>
+              <!--<textarea name="blogText" id="blogText" class="materialize-textarea validate form-control" required #blogText></textarea>-->
+              <label for="blogText">Blog Content</label>
+            </div>
+          </div>
+
+        </div>
+        <div class="card-action center">
+          <a href=""><button type="submit" style="all: inherit">Edit</button></a>
+          <a (click)="cancelAdd()">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+

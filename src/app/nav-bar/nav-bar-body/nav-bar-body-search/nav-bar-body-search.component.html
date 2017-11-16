@@ -1,0 +1,33 @@
+<div class="row">
+  <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+  <div class="col s12">
+    <div class="card cardBack">
+      <div class="card-content">
+        <span class="card-title"><h4>Search Results</h4></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+  <div class="col s12">
+    <div class="card cardBack">
+      <div class="card-content">
+        <div *ngFor="let item of blogItems">
+          <app-blog-header
+            [item]="item"
+            [user]="user"
+            (notifyFavourite)="editFav($event)"
+            (notifyOpen)="openBlog($event)"
+            *ngIf="item.name.toLowerCase().includes(searchName.toLowerCase())">
+          </app-blog-header>
+        </div>
+        <div *ngIf="emptyFav">
+          <h5>No Search Results</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

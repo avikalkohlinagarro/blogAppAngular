@@ -1,0 +1,101 @@
+<!--<br/>-->
+<!--<div class="container-fluid">-->
+<!--<div class="container">-->
+<div class="row">
+  <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+  <div class="col s12">
+    <div class="card cardBack">
+      <div class="card-content">
+        <span class="card-title"><h3> Welcome {{user.username}}</h3></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row totalDiv">
+  <div class="col s12 m6 rightDiv">
+    <div class="card cardBack">
+      <div class="card-content">
+        <span class="card-title"><h4>Your Blogs</h4></span>
+        <div class="scrollDiv" onmouseover="this.style.overflow='auto'" onmouseout="this.style.overflow='hidden'">
+          <div *ngFor="let item of blogItems">
+            <app-blog-header [item]="item"
+                             [user]="user"
+                             [state]="state"
+                             (notifyOpen)="openBlog($event)"
+                             (notifyDelete)="deleteBlog($event)"
+                             (notifyEdit)="editClicked($event)"
+                             (notifyFavourite)="editFav($event)"
+                             *ngIf="item.author==user.username">
+            </app-blog-header>
+          </div>
+          <div *ngIf="emptyFav">
+            <br/><br/>
+            <h5>You Have Posted No Blog Yet</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m6 rightDiv" *ngIf="this.homeState=='Add'">
+    <div class="row">
+      <div class="card cardBack">
+        <div class="card-content">
+          <div style="height: 570px">
+            <span class="card-title"><h4>Add Blog</h4></span>
+            <app-add-blog [user]="user" (notifyAdd)="addBlog($event)"></app-add-blog>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m6 rightDiv" *ngIf="this.homeState=='Edit'">
+    <div class="row">
+      <div class="card cardBack">
+        <div class="card-content">
+          <div style="height: 570px">
+            <span class="card-title"><h4>Edit Blog</h4></span>
+            <app-edit-blog [item]="editItem" (cancelEdit)="cancelEdit($event)" (notifyEdit)="editBlog($event)"></app-edit-blog>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--<app-add-blog (notifyAdd)="addBlog($event)"></app-add-blog>-->
+    <!--<app-edit-blog [item]="editItem" (cancelEdit)="cancelEdit($event)" (notifyEdit)="editBlog($event)"></app-edit-blog>-->
+  </div>
+</div>
+<br/>
+<div class="row">
+  <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+  <div class="col s12">
+    <div class="card cardBack">
+      <div class="card-content">
+        <span class="card-title"><h4> All Blogs</h4></span>
+
+        <div *ngFor="let item of blogItems">
+          <!--<app-blog-header [item]="item" (click)="openBlog(item.id)"></app-blog-header>-->
+          <app-blog-header [item]="item"
+                           [user]="user"
+                           (notifyFavourite)="editFav($event)"
+                           (notifyOpen)="openBlog($event)">
+          </app-blog-header>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<div class="row">-->
+  <!--<div class="col s12">-->
+    <!--<h4> All Blogs</h4>-->
+    <!--<div *ngFor="let item of blogItems">-->
+      <!--&lt;!&ndash;<app-blog-header [item]="item" (click)="openBlog(item.id)"></app-blog-header>&ndash;&gt;-->
+      <!--<app-blog-header [item]="item"-->
+                       <!--[user]="user"-->
+                       <!--(notifyFavourite)="editFav($event)"-->
+                       <!--(notifyOpen)="openBlog($event)">-->
+      <!--</app-blog-header>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+

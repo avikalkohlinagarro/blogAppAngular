@@ -1,0 +1,63 @@
+<div class="row">
+  <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+  <div class="col s12">
+    <div class="card cardBack">
+      <div class="card-content">
+        <span class="card-title"><h4>My Favourites</h4></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+  <div class="col s12">
+    <div class="card cardBack">
+      <div class="card-content" >
+        <div #favouritesList>
+          <div *ngFor="let item of blogItems" id="favouritesList">
+            <app-blog-header
+              [item]="item"
+              [user]="user"
+              (notifyFavourite)="editFav($event)"
+              (notifyOpen)="openBlog($event)"
+              *ngIf="user.favourites.includes(item.id)">
+            </app-blog-header>
+          </div>
+        </div>
+        <div *ngIf="emptyFav">
+          <h5>No Favourites To Show</h5>
+        </div>
+        <!--<div *ngIf="favouritesList.children===''">-->
+        <!--{{emptyFav}}-->
+        <!--{{favouritesList.childNodes.values().next().value}}-->
+        <!--<div *ngIf="favouritesList.innerText==null || favouritesList.innerText==''">-->
+
+          <!--&lt;!&ndash;{{favouritesList.innerText}}&ndash;&gt;-->
+          <!--<h5>No Favourites To Show</h5>-->
+        <!--</div>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!--<div class="blogPost" (click)="openBlog(item.id)">-->
+    <!--<div class="row">-->
+      <!--<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">-->
+        <!--<h6>Title: {{item.name}}</h6>-->
+        <!--<div>-->
+          <!--Author: {{item.author}}-->
+          <!--<br/>-->
+          <!--Date: {{item.date}}-->
+          <!--<br/>-->
+          <!--Category: {{item.category}}-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
+        <!--<h6>Rating: {{item.rating}}</h6>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<app-nav-bar-description [menuDesc]="item.description"></app-nav-bar-description>-->
+<!--</div>-->

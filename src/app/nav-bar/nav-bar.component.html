@@ -1,0 +1,208 @@
+<!--<div class="row">-->
+  <!--<div class="col s12">-->
+  <ul id="dropdown1" class="dropdown-content">
+    <li *ngFor="let category of categoriesDropdown">
+      <!--<a>-->
+        <a
+          (click)="select('Categories',category.name)">
+          {{category.name}}
+        </a>
+      <!--</a>-->
+    </li>
+  </ul>
+  <nav>
+    <div class="nav-wrapper">
+      <div class="row">
+        <a href="" class="brand-logo center">BlogApp</a>
+
+        <ul class="side-nav" id="mobile-demo" #sideNav>
+          <li *ngFor="let item of menuItems">
+            <!--<a>-->
+            <a
+              [class.active] = "item.name==selected"
+              [class.current] = "item.name==selected"
+              (click)="select(item.name,'Main')" *ngIf="item.name!='Categories'">
+              {{item.name}}
+            </a>
+            <!--</a>-->
+          </li>
+          <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+              <li>
+                <a class="collapsible-header">Categories<i class="material-icons">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                  <ul>
+                    <li *ngFor="let category of categoriesDropdown">
+                      <a href="javascript:void(0);"
+                        (click)="select('Categories',category.name)">
+                        {{category.name}}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!--<li><a class="dropdown-button" data-activates="dropdown1" data-beloworigin="true">Categories<i class="material-icons right">arrow_drop_down</i></a></li>-->
+        </ul>
+        <div class="col s8">
+          <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="left hide-on-med-and-down">
+            <!--<li><a href="sass.html">Sass</a></li>-->
+            <!--<li><a href="badges.html">Components</a></li>-->
+            <li *ngFor="let item of menuItems">
+              <!--<a>-->
+              <app-nav-bar-header
+                [class.active] = "item.name==selected"
+                [class.current] = "item.name==selected"
+                [menuItem]="item.name"
+                (click)="select(item.name,'Main')" *ngIf="item.name!='Categories'">
+              </app-nav-bar-header>
+              <!--</a>-->
+            </li>
+            <!-- Dropdown Trigger -->
+            <li><a class="dropdown-button" data-activates="dropdown1" data-hover="true" data-beloworigin="true">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
+          </ul>
+        </div>
+        <div class="col s3 hide-on-med-and-down">
+          <form>
+            <div class="input-field valign-wrapper" action="javascript:void(0)" (submit)="searchBlogs(searchInput.value)">
+              <label class="label-icon" for="search"><i class="material-icons prefix">search</i></label>
+              <input id="search" type="search" (input)="searchBlogsDynamic(searchInput.value)" required #searchInput>
+              <i class="material-icons" (click)="clearSearchValue()">close</i>
+            </div>
+          </form>
+        </div>
+        <div class="col s1">
+          <ul class="left">
+            <li>
+              <app-nav-bar-header [menuItem]="'Logout'" (click)="logout()"></app-nav-bar-header>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+  <!--</div>-->
+<!--</div>-->
+
+<div class="mainBody">
+  <div *ngFor="let item of menuItems">
+    <app-nav-bar-body [username]="username" [menuItem]="item.name" [category]="'Main'" *ngIf="item.name==selected && item.name != 'Categories' && searchedName ==null"></app-nav-bar-body>
+  </div>
+  <div *ngFor="let category of categoriesDropdown">
+    <app-nav-bar-body [menuItem]="'Categories'" [category]="category.name" *ngIf="category.name==selectedCategory && searchedName ==null"></app-nav-bar-body>
+  </div>
+  <app-nav-bar-body [searchName]="searchedName"></app-nav-bar-body>
+</div>
+
+
+
+
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
+  <!--<div class="container-fluid">-->
+    <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+    <!--<a class="navbar-brand" href="">BlogApp</a>-->
+    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
+      <!--<span class="navbar-toggler-icon"></span>-->
+    <!--</button>-->
+    <!--<div class="collapse navbar-collapse" id="navbarNavDropdown">-->
+      <!--<div class="col-lg-8">-->
+        <!--<ul class="nav navbar-nav navbar-left">-->
+          <!--<li *ngFor="let item of menuItems" class="nav-item">-->
+            <!--<app-nav-bar-header class="nav-link"-->
+                                <!--[class.active] = "item.name==selected"-->
+                                <!--[class.current] = "item.name==selected"-->
+                                <!--[menuItem]="item.name"-->
+                                <!--(click)="select(item.name,'Main')" *ngIf="item.name!='Categories'">-->
+            <!--</app-nav-bar-header>-->
+          <!--</li>-->
+          <!--<li class="nav-item dropdown">-->
+            <!--<a class="nav-link dropdown-toggle" [class.active] = "selected=='Categories'" href="#" id="navbarDropdownMenuLink" data-hover="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+              <!--Categories-->
+            <!--</a>-->
+            <!--<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">-->
+              <!--<app-nav-bar-header *ngFor="let category of categoriesDropdown"-->
+                                  <!--[menuItem]="category.name" class="dropdown-item"-->
+                                  <!--(click)="select('Categories',category.name)">-->
+              <!--</app-nav-bar-header>-->
+            <!--</div>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+      <!--<ul class="nav navbar-nav navbar-right pull-right">-->
+        <!--<li>-->
+          <!--<form class="navbar navbar-form form-inline my-2 my-lg-0" action="javascript:void(0)" (submit)="searchBlogs(searchInput.value)" >-->
+            <!--<input id="searchInput" class="form-control mr-sm-2" type="text" placeholder="Search Blogs By Name"(input)="searchBlogsDynamic(searchInput.value)" #searchInput>-->
+            <!--<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</button>-->
+          <!--</form>-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</nav>-->
+<!--<br/>-->
+
+
+
+
+
+<!--<div class="navbarMain">-->
+  <!--<div *ngFor="let item of menuItems">-->
+    <!--<app-nav-bar-header-->
+      <!--[class.current] = "item.name==selected"-->
+      <!--[menuItem]="item.name"-->
+      <!--(click)="select(item.name,'Main')" *ngIf="item.name!='Categories'">-->
+    <!--</app-nav-bar-header>-->
+    <!--<div class="dropdownMain" *ngIf="item.name=='Categories'">-->
+      <!--<button class="dropbtn">Categories-->
+        <!--<i class="downButton fa fa-caret-down"></i>-->
+        <!--<i class="upButton fa fa-caret-up"></i>-->
+      <!--</button>-->
+      <!--<div class="dropdownContent" >-->
+        <!--<app-nav-bar-header *ngFor="let category of categoriesDropdown"-->
+          <!--[class.current] = "item.name==selected"-->
+          <!--[menuItem]="category.name"-->
+          <!--(click)="select(item.name,category.name)">-->
+        <!--</app-nav-bar-header>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="searchForm">-->
+    <!--<form action="javascript:void(0)">-->
+      <!--<input type="text">-->
+      <!--<button type="submit">Search</button>-->
+    <!--</form>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+
+<!--<div class="container-fluid">-->
+<!--<ul class="list">-->
+<!--<li *ngFor="let item of menuItems">-->
+
+<!--<app-nav-bar-header-->
+<!--[class.current] = "item.name==selected"-->
+<!--[menuItem]="item.name"-->
+<!--(click)="select(item.name,'Main')" *ngIf="item.name!='Categories'">-->
+<!--</app-nav-bar-header>-->
+<!--<div class="dropdownMain"-->
+<!--[class.current] = "item.name==selected"-->
+<!--*ngIf="item.name=='Categories'">-->
+<!--Categories-->
+<!--<div class="dropdownContent" >-->
+<!--&lt;!&ndash;<div *ngFor="let category of categoriesDropdown">&ndash;&gt;-->
+<!--<app-nav-bar-header *ngFor="let category of categoriesDropdown"-->
+<!--[class.current] = "item.name==selected"-->
+<!--[menuItem]="category.name"-->
+<!--(click)="select(item.name,category.name)">-->
+<!--</app-nav-bar-header>-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash;<app-nav-bar-description [menuDesc]="item.description"></app-nav-bar-description>&ndash;&gt;-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->

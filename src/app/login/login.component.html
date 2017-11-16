@@ -1,0 +1,4 @@
+<app-login-nav-bar (notifySelected)="changeSelected($event)"></app-login-nav-bar>
+<app-login-body-login [users]="users" (notifyLogin)="loginUser($event)" *ngIf="this.selected=='Login'"></app-login-body-login>
+<app-login-body-signup [users]="users" (notifyAdd)="addUser($event)" *ngIf="this.selected=='SignUp'"></app-login-body-signup>
+

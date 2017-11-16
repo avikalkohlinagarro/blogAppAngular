@@ -1,0 +1,37 @@
+<nav>
+  <div class="nav-wrapper">
+    <div class="row">
+      <a href="" class="brand-logo center">BlogApp</a>
+      <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="side-nav" id="mobile-demo" #sideNav>
+        <li *ngFor="let item of menuItems">
+          <a
+            [class.active] = "item.name==selected"
+            [class.current] = "item.name==selected"
+            (click)="select(item.name)" *ngIf="item.name!='Categories'">
+            {{item.name}}
+          </a>
+        </li>
+      </ul>
+      <ul class="right hide-on-med-and-down">
+        <li *ngFor="let item of menuItems">
+          <a
+            [class.active] = "item.name==selected"
+            [class.current] = "item.name==selected"
+            (click)="select(item.name,'Main')" *ngIf="item.name!='Categories'">
+            {{item.name}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--<div class="mainBody">-->
+  <!--<div *ngFor="let item of menuItems">-->
+    <!--<app-nav-bar-body [username]="username" [menuItem]="item.name" [category]="'Main'" *ngIf="item.name==selected && item.name != 'Categories' && searchedName ==null"></app-nav-bar-body>-->
+  <!--</div>-->
+  <!--<div *ngFor="let category of categoriesDropdown">-->
+    <!--<app-nav-bar-body [menuItem]="'Categories'" [category]="category.name" *ngIf="category.name==selectedCategory && searchedName ==null"></app-nav-bar-body>-->
+  <!--</div>-->
+  <!--<app-nav-bar-body [searchName]="searchedName"></app-nav-bar-body>-->
+<!--</div>-->

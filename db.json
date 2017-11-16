@@ -1,0 +1,102 @@
+{
+  "blog": [
+    {
+      "id": 1,
+      "name": "Blog 1",
+      "author": "Aayushi Malik",
+      "date": "29th December",
+      "text": "My Blog yay",
+      "category": "Technology",
+      "rating": 8.7,
+      "ratingUsers": [
+        "Avikal Kohli"
+      ]
+    },
+    {
+      "name": "B",
+      "author": "A",
+      "category": "Technology",
+      "text": "C",
+      "date": "Thursday, November 9th, 2017, 4:42:30 PM",
+      "rating": 0,
+      "ratingUsers": [],
+      "id": 2
+    },
+    {
+      "name": "D",
+      "author": "C",
+      "category": "Current Affairs",
+      "text": "D",
+      "date": "Thursday, November 9th, 2017, 4:43:09 PM",
+      "rating": 0,
+      "ratingUsers": [],
+      "id": 3
+    },
+    {
+      "name": "B",
+      "author": "A",
+      "category": "India",
+      "text": "D",
+      "date": "Thursday, November 9th, 2017, 4:43:28 PM",
+      "rating": 0,
+      "ratingUsers": [],
+      "id": 4,
+      "username": "a",
+      "password": "a",
+      "favourites": [
+        2
+      ]
+    },
+    {
+      "name": "Will Edit This",
+      "author": "Avikal Kohli",
+      "category": "Current Affairs",
+      "text": "Newer Content",
+      "date": "Friday, November 10th, 2017, 11:05:33 AM",
+      "rating": 0,
+      "ratingUsers": [],
+      "id": 6
+    },
+    {
+      "name": "Testing Username",
+      "author": "Avikal Kohli",
+      "category": "Sports",
+      "text": "It should be added automatically",
+      "date": "Friday, November 10th, 2017, 2:54:13 PM",
+      "rating": 0,
+      "ratingUsers": [],
+      "id": 7
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "username": "Avikal Kohli",
+      "password": "avikalkohli",
+      "favourites": [
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "username": "Aayushi Malik",
+      "password": "avikalkohli",
+      "favourites": []
+    },
+    {
+      "username": "Avikal",
+      "password": "123",
+      "favourites": [],
+      "id": 3
+    },
+    {
+      "username": "a",
+      "password": "a",
+      "favourites": [
+        2,
+        7
+      ],
+      "id": 4
+    }
+  ]
+}

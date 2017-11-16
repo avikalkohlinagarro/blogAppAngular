@@ -1,0 +1,32 @@
+<br/>
+<div class="row">
+  <div class="col m3"></div>
+  <div class="col s12 m6">
+    <form ngNoForm id="formUser" action="javascript:void(0)" (submit)="checkUser(username.value,password.value)" #formUser>
+      <div class="row">
+        <div class="card blue-grey darken-1 hoverable blogPost">
+          <div class="card-content white-text">
+            <span class="card-title">Login</span>
+            <div class="row">
+              <div class="input-field col s12">
+                <!--<input id="author_name" type="text" class="validate form-control" required #author>-->
+                <input name="username" id="username" type="text" class="validate form-control" required (keypress)="clearCustomValidity()" #username>
+                <label for="username">Username</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input name="password" id="password" type="password" class="validate form-control" (keypress)="clearCustomValidity()" required #password>
+                <label for="password">Password</label>
+              </div>
+            </div>
+          </div>
+          <div class="card-action center">
+            <a href=""><button type="submit" style="all: inherit">Login</button></a>
+            <!--<a (click)="cancelAdd()">Cancel</a>-->
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

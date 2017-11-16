@@ -1,0 +1,135 @@
+.nav-wrapper .input-field input[type=search] {
+  margin-top: 11px;
+  /*margin-left: 10px;*/
+  height: 42px;
+}
+/*.nav-wrapper input[type="search"]:focus {*/
+  /*position: fixed;*/
+  /*top: 0;*/
+  /*left: 0;*/
+  /*!*width: 100%;*!*/
+/*}*/
+.input-field label {
+  margin-top: -11px;
+  max-height: 42px;
+}
+.nav-wrapper input[type="search"]:focus ~ .label-icon.active {
+  position: fixed;
+  left: 10px;
+}
+.nav-wrapper input[type="search"]:focus ~ .closed {
+  position: fixed;
+  right: 10px;
+  vertical-align: center;
+}
+
+a{
+  cursor: pointer;
+}
+
+/*app-nav-bar-header {*/
+  /*cursor: pointer;*/
+/*}*/
+
+/*app-nav-bar-header {*/
+  /*padding: 0px;*/
+  /*margin: 0px;*/
+  /*background-color: black;*/
+  /*height: 100%;*/
+  /*width: 100%;*/
+/*}*/
+
+/*a{*/
+  /*!*background-color: blue;*!*/
+  /*!*display: none;*!*/
+  /*!*padding: 0px;*!*/
+  /*!*margin: 0px;*!*/
+/*}*/
+
+/*app-nav-bar-header:active {*/
+  /*background-color: transparent;*/
+  /*color: black;*/
+/*}*/
+
+/*li.dropdown:hover > .dropdown-menu {*/
+  /*display: block;*/
+/*}*/
+
+/*.formSearch {*/
+  /*float: right;*/
+/*}*/
+
+/*.navbarMain {*/
+  /*overflow: hidden;*/
+  /*background-color: #333;*/
+/*}*/
+
+/*.navbarMain app-nav-bar-header {*/
+  /*float: left;*/
+  /*font-size: 16px;*/
+  /*color: white;*/
+  /*text-align: center;*/
+  /*padding: 14px 16px;*/
+  /*text-decoration: none;*/
+/*}*/
+
+/*.dropdownMain {*/
+  /*float: left;*/
+  /*overflow: hidden;*/
+/*}*/
+
+/*.dropdownMain .dropbtn {*/
+  /*font-size: 16px;*/
+  /*border: none;*/
+  /*outline: none;*/
+  /*color: white;*/
+  /*padding: 14px 16px;*/
+  /*background-color: inherit;*/
+/*}*/
+
+/*.navbarMain app-nav-bar-header:hover, .dropdownMain:hover {*/
+  /*background-color: grey;*/
+  /*cursor: pointer;*/
+/*}*/
+
+/*.dropdownContent {*/
+  /*display: none;*/
+  /*position: absolute;*/
+  /*background-color: #f9f9f9;*/
+  /*min-width: 160px;*/
+  /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+  /*z-index: 1;*/
+/*}*/
+
+/*.dropdownContent app-nav-bar-header {*/
+  /*float: none;*/
+  /*color: black;*/
+  /*padding: 12px 16px;*/
+  /*text-decoration: none;*/
+  /*display: block;*/
+  /*text-align: left;*/
+/*}*/
+
+/*.dropdownContent app-nav-bar-header:hover {*/
+  /*background-color: #ddd;*/
+/*}*/
+
+/*.dropdownMain:hover .dropbtn {*/
+  /*cursor: pointer;*/
+/*}*/
+
+/*.dropdownMain:hover .dropdownContent {*/
+  /*display: block;*/
+/*}*/
+
+/*.dropdownMain button .upButton {*/
+  /*display: none;*/
+/*}*/
+/*.dropdownMain:hover button .upButton {*/
+  /*display: inline-block;*/
+/*}*/
+/*.dropdownMain:hover button .downButton {*/
+  /*display: none;*/
+/*}*/
+
+

@@ -1,0 +1,23 @@
+h3, h5 {
+  text-align: center;
+}
+
+.container-fluid {
+  color: white;
+}
+
+.blogPost {
+  /*padding: 10px;*/
+  /*background-color: darkgrey;*/
+  /*-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);*/
+  /*-moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);*/
+  /*box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);*/
+  /*cursor: pointer;*/
+  opacity: 0.8;
+  /*color: white;*/
+}
+
+.blogPost:hover {
+  opacity: 0.9;
+  /*color: white;*/
+}

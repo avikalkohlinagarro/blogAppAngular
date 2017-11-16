@@ -1,0 +1,10 @@
+<h4>Top Blogs</h4>
+<div *ngFor="let item of blogItems">
+  <app-blog-header
+    [item]="item"
+    [user]="user"
+    (notifyFavourite)="editFav($event)"
+    (notifyOpen)="openBlog($event)"
+    *ngIf="item.rating > 8">
+  </app-blog-header>
+</div>

@@ -1,0 +1,11 @@
+.blogPost {
+  opacity: 0.8;
+}
+
+.blogPost:hover {
+  opacity: 0.9;
+}
+
+a {
+  cursor: pointer;
+}
