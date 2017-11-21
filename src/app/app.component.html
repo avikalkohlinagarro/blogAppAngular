@@ -1,2 +1,3 @@
 <app-nav-bar [username]="username" *ngIf="username!=null" (notifyUser)="logout($event)" ngDefaultControl></app-nav-bar>
 <app-login *ngIf="username==null" (notifyUser)="changeUsername($event)"></app-login>
+<app-footer></app-footer>

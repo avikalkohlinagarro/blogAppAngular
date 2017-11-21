@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AfterViewChecked, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 declare let $: any;
 // import * as $ from 'jquery';
 // import $ from 'jquery';
@@ -8,7 +8,7 @@ declare let $: any;
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent implements OnInit, AfterViewChecked {
 
   selected: string;
   selectedCategory: string;
@@ -16,6 +16,8 @@ export class NavBarComponent implements OnInit {
   searchValue: string;
   @Input('username') username;
   @Output() notifyUser: EventEmitter<string> = new EventEmitter<string>();
+
+  countFavourites: number;
 
   menuItems: object [] = [
     {
@@ -97,7 +99,7 @@ export class NavBarComponent implements OnInit {
     this.selected = 'Home';
   }
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
     // this.selected = 'Home';
     // console.log(this.username);
     // $('.button-collapse').sideNav();
@@ -131,6 +133,12 @@ export class NavBarComponent implements OnInit {
     });
     $('.modal').modal();
     // });
+  }
+
+  ngAfterViewChecked() {
+    this.countFavourites = this.username.favourites.length;
+    // console.log(this.countFavourites);
+    this.cd.detectChanges();
   }
 
 }

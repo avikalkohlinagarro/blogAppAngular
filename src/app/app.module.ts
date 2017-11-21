@@ -22,6 +22,7 @@ import { LoginBodyLoginComponent } from './login/login-body-login/login-body-log
 import { LoginBodySignupComponent } from './login/login-body-signup/login-body-signup.component';
 import {UserListService} from "./user-list.service";
 import { NavBarBodyRatingsComponent } from './nav-bar/nav-bar-body/nav-bar-body-ratings/nav-bar-body-ratings.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { NavBarBodyRatingsComponent } from './nav-bar/nav-bar-body/nav-bar-body-
     LoginNavBarComponent,
     LoginBodyLoginComponent,
     LoginBodySignupComponent,
-    NavBarBodyRatingsComponent
+    NavBarBodyRatingsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -52,12 +52,17 @@
             <!--<li><a href="badges.html">Components</a></li>-->
             <li *ngFor="let item of menuItems">
               <!--<a>-->
-              <app-nav-bar-header
-                [class.active] = "item.name==selected"
-                [class.current] = "item.name==selected"
-                [menuItem]="item.name"
+              <!--<app-nav-bar-header-->
+                <!--[class.active] = "item.name==selected"-->
+                <!--[class.current] = "item.name==selected"-->
+                <!--[menuItem]="item.name"-->
+                <!--(click)="select(item.name,'Main')" *ngIf="item.name!='Categories'">-->
+              <!--</app-nav-bar-header>-->
+              <a
                 (click)="select(item.name,'Main')" *ngIf="item.name!='Categories'">
-              </app-nav-bar-header>
+                {{item.name}}
+                <!--<span class="new badge" data-badge-caption="" *ngIf="item.name=='Favourites'">{{countFavourites}}</span>-->
+              </a>
               <!--</a>-->
             </li>
             <!-- Dropdown Trigger -->
@@ -76,7 +81,8 @@
         <div class="col s1">
           <ul class="left">
             <li>
-              <app-nav-bar-header [menuItem]="'Logout'" (click)="logout()"></app-nav-bar-header>
+              <!--<app-nav-bar-header [menuItem]="'Logout'" (click)="logout()"></app-nav-bar-header>-->
+              <a (click)="logout()">Logout</a>
             </li>
           </ul>
         </div>
