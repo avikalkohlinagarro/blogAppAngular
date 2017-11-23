@@ -46,6 +46,7 @@ export class AddBlogComponent implements OnInit {
       text: blogText,
       date: dateFormat(new Date(), "dddd, mmmm dS, yyyy, h:MM:ss TT"),
       rating: 0,
+      ratingByUser: [],
       ratingUsers: []
     }
     // console.log("Form Submitted");

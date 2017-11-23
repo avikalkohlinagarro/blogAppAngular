@@ -19,17 +19,6 @@ export class NavBarComponent implements OnInit, AfterViewChecked {
 
   countFavourites: number;
 
-  menuItems: object [] = [
-    {
-      name: 'Home'
-    },
-    {
-      name: 'Favourites'
-    },
-    {
-      name: 'Categories'
-    }
-  ];
   // menuItems: object [] = [
   //   {
   //     name: 'Home'
@@ -39,11 +28,22 @@ export class NavBarComponent implements OnInit, AfterViewChecked {
   //   },
   //   {
   //     name: 'Categories'
-  //   },
-  //   {
-  //     name: 'Top Rated'
   //   }
   // ];
+  menuItems: object [] = [
+    {
+      name: 'Home'
+    },
+    {
+      name: 'Favourites'
+    },
+    {
+      name: 'Categories'
+    },
+    {
+      name: 'Top Rated'
+    }
+  ];
 
   categoriesDropdown: object [] = [
     {
@@ -99,6 +99,10 @@ export class NavBarComponent implements OnInit, AfterViewChecked {
     this.selected = 'Home';
   }
 
+  openTapTarget() {
+    $('.tap-target').tapTarget('open');
+  }
+
   constructor(private cd: ChangeDetectorRef) {
     // this.selected = 'Home';
     // console.log(this.username);
@@ -110,8 +114,8 @@ export class NavBarComponent implements OnInit, AfterViewChecked {
     // $('.button-collapse').sideNav();
     // console.log($('.button-collapse'));
     // console.log(this.username);
-    $(".dropdown-button").dropdown();
-    $(".button-collapse").sideNav({
+    $('.dropdown-button').dropdown();
+    $('.button-collapse').sideNav({
       closeOnClick: true
     });
     $('.collapsible').collapsible();

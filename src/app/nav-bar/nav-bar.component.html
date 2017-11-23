@@ -1,95 +1,96 @@
 <!--<div class="row">-->
   <!--<div class="col s12">-->
-  <ul id="dropdown1" class="dropdown-content">
-    <li *ngFor="let category of categoriesDropdown">
-      <!--<a>-->
-        <a
-          (click)="select('Categories',category.name)">
-          {{category.name}}
-        </a>
-      <!--</a>-->
-    </li>
-  </ul>
-  <nav>
-    <div class="nav-wrapper">
-      <div class="row">
-        <a href="" class="brand-logo center">BlogApp</a>
+<ul id="dropdown1" class="dropdown-content">
+  <li *ngFor="let category of categoriesDropdown">
+    <!--<a>-->
+      <a
+        (click)="select('Categories',category.name)">
+        {{category.name}}
+      </a>
+    <!--</a>-->
+  </li>
+</ul>
+<nav>
+  <div class="nav-wrapper">
+    <div class="row">
+      <a href="" class="brand-logo center">BlogApp</a>
 
-        <ul class="side-nav" id="mobile-demo" #sideNav>
+      <ul class="side-nav" id="mobile-demo" #sideNav>
+        <li *ngFor="let item of menuItems">
+          <!--<a>-->
+          <a
+            [class.active] = "item.name==selected"
+            [class.current] = "item.name==selected"
+            (click)="select(item.name,'Main')" *ngIf="item.name!='Categories'">
+            {{item.name}}
+          </a>
+          <!--</a>-->
+        </li>
+        <li class="no-padding">
+          <ul class="collapsible collapsible-accordion">
+            <li>
+              <a class="collapsible-header">Categories<i class="material-icons">arrow_drop_down</i></a>
+              <div class="collapsible-body">
+                <ul>
+                  <li *ngFor="let category of categoriesDropdown">
+                    <a href="javascript:void(0);"
+                      (click)="select('Categories',category.name)">
+                      {{category.name}}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <!--<li><a class="dropdown-button" data-activates="dropdown1" data-beloworigin="true">Categories<i class="material-icons right">arrow_drop_down</i></a></li>-->
+      </ul>
+      <div class="col s8">
+        <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="left hide-on-med-and-down">
+          <!--<li><a href="sass.html">Sass</a></li>-->
+          <!--<li><a href="badges.html">Components</a></li>-->
           <li *ngFor="let item of menuItems">
             <!--<a>-->
+            <!--<app-nav-bar-header-->
+              <!--[class.active] = "item.name==selected"-->
+              <!--[class.current] = "item.name==selected"-->
+              <!--[menuItem]="item.name"-->
+              <!--(click)="select(item.name,'Main')" *ngIf="item.name!='Categories'">-->
+            <!--</app-nav-bar-header>-->
             <a
-              [class.active] = "item.name==selected"
-              [class.current] = "item.name==selected"
               (click)="select(item.name,'Main')" *ngIf="item.name!='Categories'">
               {{item.name}}
+              <!--<span class="new badge" data-badge-caption="" *ngIf="item.name=='Favourites'">{{countFavourites}}</span>-->
             </a>
             <!--</a>-->
           </li>
-          <li class="no-padding">
-            <ul class="collapsible collapsible-accordion">
-              <li>
-                <a class="collapsible-header">Categories<i class="material-icons">arrow_drop_down</i></a>
-                <div class="collapsible-body">
-                  <ul>
-                    <li *ngFor="let category of categoriesDropdown">
-                      <a href="javascript:void(0);"
-                        (click)="select('Categories',category.name)">
-                        {{category.name}}
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <!--<li><a class="dropdown-button" data-activates="dropdown1" data-beloworigin="true">Categories<i class="material-icons right">arrow_drop_down</i></a></li>-->
+          <!-- Dropdown Trigger -->
+          <li><a class="dropdown-button" data-activates="dropdown1" data-hover="true" data-beloworigin="true">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
-        <div class="col s8">
-          <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-          <ul class="left hide-on-med-and-down">
-            <!--<li><a href="sass.html">Sass</a></li>-->
-            <!--<li><a href="badges.html">Components</a></li>-->
-            <li *ngFor="let item of menuItems">
-              <!--<a>-->
-              <!--<app-nav-bar-header-->
-                <!--[class.active] = "item.name==selected"-->
-                <!--[class.current] = "item.name==selected"-->
-                <!--[menuItem]="item.name"-->
-                <!--(click)="select(item.name,'Main')" *ngIf="item.name!='Categories'">-->
-              <!--</app-nav-bar-header>-->
-              <a
-                (click)="select(item.name,'Main')" *ngIf="item.name!='Categories'">
-                {{item.name}}
-                <!--<span class="new badge" data-badge-caption="" *ngIf="item.name=='Favourites'">{{countFavourites}}</span>-->
-              </a>
-              <!--</a>-->
-            </li>
-            <!-- Dropdown Trigger -->
-            <li><a class="dropdown-button" data-activates="dropdown1" data-hover="true" data-beloworigin="true">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
-          </ul>
-        </div>
-        <div class="col s3 hide-on-med-and-down">
-          <form>
-            <div class="input-field valign-wrapper" action="javascript:void(0)" (submit)="searchBlogs(searchInput.value)">
-              <label class="label-icon" for="search"><i class="material-icons prefix">search</i></label>
-              <input id="search" type="search" (input)="searchBlogsDynamic(searchInput.value)" required #searchInput>
-              <i class="material-icons" (click)="clearSearchValue()">close</i>
-            </div>
-          </form>
-        </div>
-        <div class="col s1">
-          <ul class="left">
-            <li>
-              <!--<app-nav-bar-header [menuItem]="'Logout'" (click)="logout()"></app-nav-bar-header>-->
-              <a (click)="logout()">Logout</a>
-            </li>
-          </ul>
-        </div>
-
       </div>
+      <div class="col s3 hide-on-med-and-down">
+        <form>
+          <div class="input-field valign-wrapper" action="javascript:void(0)" (submit)="searchBlogs(searchInput.value)">
+            <label class="label-icon" for="search"><i class="material-icons prefix">search</i></label>
+            <input id="search" type="search" (input)="searchBlogsDynamic(searchInput.value)" required #searchInput>
+            <i class="material-icons" (click)="clearSearchValue()">close</i>
+          </div>
+        </form>
+      </div>
+      <div class="col s3 hide-on-large-only"></div>
+      <div class="col s1">
+        <ul class="right">
+          <li>
+            <!--<app-nav-bar-header [menuItem]="'Logout'" (click)="logout()"></app-nav-bar-header>-->
+            <a (click)="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+
     </div>
-  </nav>
+  </div>
+</nav>
   <!--</div>-->
 <!--</div>-->
 
@@ -102,6 +103,30 @@
   </div>
   <app-nav-bar-body [searchName]="searchedName"></app-nav-bar-body>
 </div>
+
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large cyan">
+    <i class="large material-icons">menu</i>
+  </a>
+  <ul>
+    <li><a class="btn-floating yellow darken-1" (click)="select('Home','Main')"><i class="material-icons">home</i></a></li>
+    <li><a class="btn-floating red" (click)="select('Favourites','Main')"><i class="material-icons">favorite</i></a></li>
+    <li><a class="btn-floating green" (click)="select('Top Rated','Main')"><i class="material-icons">star</i></a></li>
+    <li><a class="btn-floating blue" (click)="select('Home','Main')"><i class="material-icons">add</i></a></li>
+  </ul>
+</div>
+
+<!--<div class="fixed-action-btn">-->
+  <!--<a id="menu" class="waves-effect waves-light btn btn-floating btn-large cyan" (click)="openTapTarget()"><i class="material-icons">menu</i></a>-->
+<!--</div>-->
+
+<!-- Tap Target Structure -->
+<!--<div class="tap-target cyan" data-activates="menu">-->
+  <!--<div class="tap-target-content">-->
+    <!--<h5>BlogApp</h5>-->
+    <!--<p>A bunch of text</p>-->
+  <!--</div>-->
+<!--</div>-->
 
 
 

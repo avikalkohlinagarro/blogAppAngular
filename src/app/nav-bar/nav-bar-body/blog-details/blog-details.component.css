@@ -21,3 +21,59 @@ h3, h5 {
   opacity: 0.9;
   /*color: white;*/
 }
+
+
+/*@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);*/
+
+/****** Style Star Rating Widget *****/
+
+.rating {
+  border: none;
+  /*float: left;*/
+}
+
+/*input {*/
+  /*display: none;*/
+/*}*/
+
+[type="radio"]:not(:checked) + label::before, [type="radio"]:not(:checked) + label::after {
+   /*border: 0px;*/
+  border-color: transparent;
+  /*border: transparent;*/
+  /*opacity: 0;*/
+  /*color: transparent;*/
+ }
+
+[type="radio"]:checked + label::after, [type="radio"]:checked + label::after {
+  /*border: 0px;*/
+  /*z-index: 0;*/
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.rating > label:before {
+  margin: 10px;
+  font-size: 2.5em;
+  font-family: "Material Icons";
+  display: inline-block;
+  content: "star";
+}
+
+.rating > .half:before {
+  content: "star";
+  position: absolute;
+}
+
+.rating > label {
+  color: #ddd;
+  float: right;
+}
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }

@@ -1,11 +1,14 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AfterViewChecked, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+declare let $: any;
+declare function require(name: string);
+const dateFormat = require('dateformat');
 
 @Component({
   selector: 'app-blog-details',
   templateUrl: './blog-details.component.html',
   styleUrls: ['./blog-details.component.css']
 })
-export class BlogDetailsComponent implements OnInit {
+export class BlogDetailsComponent implements OnInit, AfterViewChecked {
 
   // @Input('blogID') blogID;
   // @Input('blogItems') blogItems;
@@ -13,6 +16,9 @@ export class BlogDetailsComponent implements OnInit {
   @Input('blogDetailData') blogDetailData;
   @Output() notify: EventEmitter<string> = new EventEmitter<string>();
   @Output() notifyFavourite: EventEmitter<object> = new EventEmitter<object>();
+  @Output() notifyRating: EventEmitter<object> = new EventEmitter<object>();
+
+  rating: number;
 
   isFavourite: boolean;
 
@@ -42,6 +48,33 @@ export class BlogDetailsComponent implements OnInit {
     // console.log(data);
   }
 
+  setRating(number) {
+    if (this.blogDetailData.ratingUsers.indexOf(this.user.username) === -1) {
+      this.blogDetailData.ratingUsers.push(this.user.username);
+      this.blogDetailData.ratingByUser.push(number);
+      // const lengthUser = this.blogDetailData.ratingUsers.length;
+      // this.blogDetailData.rating = (this.blogDetailData.rating * (lengthUser - 1) + number) / lengthUser;
+    } else {
+      const indexUser = this.blogDetailData.ratingUsers.indexOf(this.user.username);
+      this.blogDetailData.ratingByUser[indexUser] = number;
+    }
+    const lengthUser = this.blogDetailData.ratingUsers.length;
+    this.blogDetailData.rating = this.blogDetailData.ratingByUser.reduce((a, b) => a + b, 0) / lengthUser;
+    const newBlog = {
+      id: this.blogDetailData.id,
+      name: this.blogDetailData.name,
+      author: this.blogDetailData.author,
+      category: this.blogDetailData.category,
+      text: this.blogDetailData.text,
+      date: dateFormat(new Date(), 'dddd, mmmm dS, yyyy, h:MM:ss TT'),
+      rating: this.blogDetailData.rating,
+      ratingByUser: this.blogDetailData.ratingByUser,
+      ratingUsers: this.blogDetailData.ratingUsers
+    };
+    console.log(newBlog);
+    this.notifyRating.emit(newBlog);
+  }
+
   constructor() {}
 
   ngOnInit() {
@@ -51,6 +84,15 @@ export class BlogDetailsComponent implements OnInit {
         this.isFavourite = true;
       }
     }.bind(this));
+    if (this.blogDetailData.ratingUsers.indexOf(this.user.username) !== -1) {
+      console.log(this.blogDetailData.ratingUsers.indexOf(this.user.username));
+      console.log(this.blogDetailData.ratingByUser)
+      this.rating = this.blogDetailData.ratingByUser[this.blogDetailData.ratingUsers.indexOf(this.user.username)];
+    }
+  }
+
+  ngAfterViewChecked() {
+    // console.log(this.rating);
   }
 
 }

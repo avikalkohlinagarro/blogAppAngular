@@ -33,6 +33,7 @@ export class EditBlogComponent implements OnInit {
       text: blogText,
       date: dateFormat(new Date(), "dddd, mmmm dS, yyyy, h:MM:ss TT"),
       rating: this.item.rating,
+      ratingByUser: this.item.ratingByUser,
       ratingUsers: this.item.ratingUsers
     }
     // console.log("Form Submitted");

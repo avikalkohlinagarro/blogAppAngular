@@ -9,13 +9,36 @@
         <h3>{{blogDetailData.name}}</h3>
         <h5>By: {{blogDetailData.author}}</h5>
         <h5>Date Created: {{blogDetailData.date}}</h5>
-        <a class="waves-effect waves-light btn favouriteButton center" (click)="favouriteBlog(user)" *ngIf="!isFavourite">
-          <i class="large material-icons left">favorite</i>Mark As Favourite
-        </a>
-        <a class="waves-effect waves-light btn favouriteButton center" (click)="unfavouriteBlog(user)" *ngIf="isFavourite">
-          <i class="large material-icons left">favorite</i>Remove from Favourites
-        </a>
-        <br/>
+        <div *ngIf="blogDetailData.author != user.username">
+          <a class="waves-effect waves-light btn favouriteButton center" (click)="favouriteBlog(user)" *ngIf="!isFavourite">
+            <i class="large material-icons left">favorite</i>Mark As Favourite
+          </a>
+          <a class="waves-effect waves-light btn favouriteButton center" (click)="unfavouriteBlog(user)" *ngIf="isFavourite">
+            <i class="large material-icons left">favorite</i>Remove from Favourites
+          </a>
+        </div>
+        <div class="row" *ngIf="blogDetailData.author != user.username">
+          <div class="col s3"></div>
+          <div class="col s5">
+            <div class="row">
+              <div class="col s1"></div>
+              <div class="col s10">
+                <fieldset class="rating">
+                  <input type="radio" id="star5" [(ngModel)]="rating" (ngModelChange)="setRating($event)" name="rating" [value]="5" />
+                  <label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                  <input type="radio" id="star4" [(ngModel)]="rating" (ngModelChange)="setRating($event)" name="rating" [value]="4" />
+                  <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                  <input type="radio" id="star3" [(ngModel)]="rating" (ngModelChange)="setRating($event)" name="rating" [value]="3" />
+                  <label class = "full" for="star3" title="Good - 3 stars"></label>
+                  <input type="radio" id="star2" [(ngModel)]="rating" (ngModelChange)="setRating($event)" name="rating" [value]="2" />
+                  <label class = "full" for="star2" title="Unsatisfactory - 2 stars"></label>
+                  <input type="radio" id="star1" [(ngModel)]="rating" (ngModelChange)="setRating($event)" name="rating" [value]="1" />
+                  <label class = "full" for="star1" title="Really Bad - 1 star"></label>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
         <br/>
         <br/>
         <p>{{blogDetailData.text}}</p>
@@ -23,12 +46,16 @@
         <!--<h5>By: {{blogItems[blogID].author}}</h5>-->
         <!--<h5>Date Created: {{blogItems[blogID].date}}</h5>-->
         <!--<p>{{blogItems[blogID].text}}</p>-->
+
       </div>
       <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
       <div class="col s2">
         <!--<button class="btn btn-lg btn-outline-secondary" (click)="goBack()">-->
-        <a class="waves-effect waves-light btn-large" (click)="goBack()">
+        <a class="waves-effect waves-light btn-large hide-on-med-and-down" (click)="goBack()">
           <i class="large material-icons left">chevron_left</i>Back
+        </a>
+        <a class="waves-effect waves-light btn btn-floating hide-on-large-only" (click)="goBack()">
+          <i class="material-icons left">chevron_left</i>
         </a>
       </div>
     </div>

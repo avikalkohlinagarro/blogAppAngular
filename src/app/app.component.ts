@@ -34,8 +34,8 @@ export class AppComponent implements OnInit {
       this.username = JSON.parse(localStorage.getItem('userDetails'));
     }
     // $(document).ready(function(){
-    $(".dropdown-button").dropdown();
-    $(".button-collapse").sideNav({
+    $('.dropdown-button').dropdown();
+    $('.button-collapse').sideNav({
       closeOnClick: true
     })
     $('.collapsible').collapsible();
